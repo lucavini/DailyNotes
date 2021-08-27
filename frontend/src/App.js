@@ -1,13 +1,14 @@
 import React from 'react';
+import Aside from './Components/Aside';
+import NoteList from './Components/NoteList';
+import "./style/app.css";
+import "./style/global.css";
 
 const App = () => {
-  const [count, setCount] = React.useState(0);
-
   return (
-    <div className="App">
-      <p>{count}</p>
-      <p>DayNotes</p>
-      <button onClick={() => setCount(count + 1)}>Clique</button>
+    <div id="app">
+      <Aside />
+      <NoteList />
     </div>
   );
 };
