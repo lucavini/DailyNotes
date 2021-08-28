@@ -1,14 +1,14 @@
 import React from 'react';
 
-const NoteCard = () => {
+const NoteCard = ({note}) => {
   return (
     <React.Fragment>
       <div>
-        <strong>Fazer Compras</strong>
+        <strong>{note.title}</strong>
         <div>X</div>
       </div>
 
-      <textarea defaultValue="Lorem ipsum dolor sit amet, consectetur adipiscing elit."></textarea>
+      <textarea defaultValue={note.notes}></textarea>
 
       <span>!</span>
     </React.Fragment>
