@@ -1,14 +1,29 @@
 import React from 'react';
+import api from '../Services/api';
 import '../style/noteList.css';
 import NoteCard from './NoteCard';
 
-const NoteList = () => {
+const NoteList = ({ title, notes }) => {
+  const [allNotes, setAllNotes] = React.useState([]);
+
+  React.useEffect(() => {
+    async function getAllNotes() {
+      const response = await api.get('/annotations');
+      setAllNotes(response.data);
+    }
+    getAllNotes();
+  }, [title, notes]);
+
   return (
     <main>
       <ul>
-        <li className="notepad-infos">
-          <NoteCard />
-        </li>
+        {allNotes.map((note, index) => {
+          return (
+            <li className="notepad-infos" key={index}>
+              <NoteCard note={note} />
+            </li>
+          );
+        })}
       </ul>
     </main>
   );
