@@ -1,20 +1,32 @@
 import React from 'react';
 import api from '../Services/api';
 import '../style/aside.css';
+import RadioButton from './RadioButton';
 
-const Aside = ({ title, setTitle, notes, setNotes }) => {
+const Aside = ({ setSubmit, priority, setPriority }) => {
+  const [title, setTitle] = React.useState('');
+  const [notes, setNotes] = React.useState('');
+
   async function handleSubmit(event) {
     event.preventDefault();
+
+    let option;
+    if (priority === 'Prioridade') {
+      option = true;
+    } else if (priority === 'Normal' || priority === 'Todos') {
+      option = false;
+    }
 
     const response = await api.post('/annotations', {
       title,
       notes,
-      priority: false,
+      priority: option,
     });
 
     if (response.status === 200) {
       setTitle('');
       setNotes('');
+      setSubmit(priority);
     }
   }
 
@@ -27,6 +39,7 @@ const Aside = ({ title, setTitle, notes, setNotes }) => {
           <input
             id="titulo"
             required
+            maxLength="30"
             value={title}
             onChange={({ target }) => setTitle(target.value)}
           />
@@ -42,8 +55,20 @@ const Aside = ({ title, setTitle, notes, setNotes }) => {
           />
         </div>
 
-        <button type="submit">Salvar</button>
+        {title && notes ? (
+          <button type="submit">Salvar</button>
+        ) : (
+          <button disabled type="submit">
+            Salvar
+          </button>
+        )}
       </form>
+
+      <RadioButton
+        options={['Todos', 'Prioridade', 'Normal']}
+        value={priority}
+        setValue={setPriority}
+      />
     </aside>
   );
 };
