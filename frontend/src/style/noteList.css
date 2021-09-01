@@ -30,13 +30,15 @@ li.notepad-infos strong {
 }
 
 li.notepad-infos div div {
-  color: #ff957f;
+  padding: 5px 10px;
+  color: #c4c4c4;
   cursor: pointer;
   transition: 0.2s;
+  font-size: 20px;
 }
 
 li.notepad-infos div div:hover {
-  color: #d86750;
+  color: #ff4520;
 }
 
 li.notepad-infos textarea {
@@ -51,14 +53,44 @@ li.notepad-infos textarea {
   resize: none;
 }
 
-li.notepad-infos span {
+li.notepad-infos .setPriority {
+  padding: 5px 10px;
   color: #c4c4c4;
+  font-size: 20px;
   cursor: pointer;
   transition: 0.2s;
 }
 
-li.notepad-infos span:hover {
-  color: #d86750;
+li.notepad-infos .setPriority:hover {
+  color: #ff957f;
+}
+
+/* cards com prioridade */
+li.notepad-infos.priority{
+  background: #ff957f;
+}
+
+li.notepad-infos.priority textarea{
+  color: #fff;
+  background: #ff957f;
+}
+
+li.notepad-infos.priority strong {
+  color: #fff;
+}
+
+li.notepad-infos.priority .setPriority{
+  color: #fff;
+}
+li.notepad-infos.priority .setPriority:hover {
+  color: #e9e2e2;
+}
+
+li.notepad-infos.priority div div {
+  color: #fff;
+}
+li.notepad-infos.priority  div div:hover {
+  color: #ff4520;
 }
 
 @media (max-width: 850px) {
@@ -67,3 +99,4 @@ li.notepad-infos span:hover {
     grid-template-columns: 1fr;
   }
 }
+
