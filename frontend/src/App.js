@@ -5,18 +5,18 @@ import './style/app.css';
 import './style/global.css';
 
 const App = () => {
-  const [title, setTitle] = React.useState('');
-  const [notes, setNotes] = React.useState('');
+  const [submit, setSubmit] = React.useState(false);
+  const [priority, setPriority] = React.useState('Todos');
+
 
   return (
     <div id="app">
       <Aside
-        title={title}
-        setTitle={setTitle}
-        notes={notes}
-        setNotes={setNotes}
+        setSubmit={setSubmit}
+        priority={priority}
+        setPriority={setPriority}
       />
-      <NoteList title={title} notes={notes} />
+      <NoteList submit={submit} priority={priority} />
     </div>
   );
 };
